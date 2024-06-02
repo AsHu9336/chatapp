@@ -1,5 +1,5 @@
 import React from "react"
-import {browser as  Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Join from "./Components/Join";
 import Chat from "./Components/Chat";
 
@@ -7,11 +7,12 @@ import Chat from "./Components/Chat";
 function App() {
   return (
     <>
-    <Router>
-      <Route path="/"  element = {<Join/>}/>
-      <Route path="/Chat" element = {<Chat/>}/>
-
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Join />} />
+          <Route path="/Chat" element={<Chat />} />
+        </Routes>
+      </Router>
     </>
   );
 }
