@@ -7,7 +7,13 @@ const  socket  = require("socket.io");
 const server = http.createServer(app);
 const io = socket(server);
 io.on("connection", (socket) => {
+
+    console.log("Socket Connected")
     socket.emit("hello", "world");
+
+    socket.on("disconnected" , ()=>{
+        console.log("user left the chat");
+    })
 });
 // app.get('/', function (req, res) {
 
