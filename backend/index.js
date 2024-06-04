@@ -1,15 +1,19 @@
+const http = require('http');
 const express = require('express');
-
-
-const { createServer } = require('node:http')
 const app = express();
+const  socket  = require("socket.io");
 
-const server = createServer(app);
-app.get('/' , function(req, res){
 
-    req.send('Hello World');
+const server = http.createServer(app);
+const io = socket(server);
+io.on("connection", (socket) => {
+    socket.emit("hello", "world");
+});
+// app.get('/', function (req, res) {
 
-})
-server.listen(3000 , ()=>{
-    console.log("server is running at http://localhost:3000")
+//     req.send('Hello World');
+
+// })
+server.listen(5000, () => {
+    console.log("server is running at http://localhost:5000")
 })
